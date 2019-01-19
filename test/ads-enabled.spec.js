@@ -19,4 +19,8 @@ describe("ads-enabled", function() {
         expect(window.detectAB.callback).toBe(true);
     });
 
+    it("should add the adblocker-test-js script to the page", function() {
+        expect(document.getElementById("adblocker-test-js")).toBeTruthy();
+    });
+
 });
