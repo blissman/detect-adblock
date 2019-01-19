@@ -1,0 +1,41 @@
+{
+  "name": "gulpbuild",
+  "version": "1.1.0",
+  "description": "a starter repository for setting up gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blissman/gulpbuild.git"
+  },
+  "keywords": [
+    "gulp",
+    "karma",
+    "testing"
+  ],
+  "author": "Bliss Man",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blissman/gulpbuild/issues"
+  },
+  "homepage": "https://github.com/blissman/gulpbuild#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-eslint": "^5.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-uglify": "^3.0.1",
+    "jasmine": "^3.3.1",
+    "karma": "^3.1.4",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^2.0.1"
+  }
+}
