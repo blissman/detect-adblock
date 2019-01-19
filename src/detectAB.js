@@ -9,4 +9,4 @@
         // do something else if ads are blocked
         console.log("detectAB: ads are blocked");
     }
-})
+});
