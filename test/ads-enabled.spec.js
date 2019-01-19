@@ -11,4 +11,12 @@ describe("ads-enabled", function() {
         expect(window.detectAB.detect(callback)).toBe(true);
     });
 
+    it("detectAB.detect should run the parameter callback if ads are enabled", function() {
+        const callback = () => {
+            window.detectAB.callback = true;
+        };
+        window.detectAB.detect(callback);
+        expect(window.detectAB.callback).toBe(true);
+    });
+
 });
