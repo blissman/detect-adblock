@@ -1,4 +1,4 @@
-describe("detect-adblock", function() {
+describe("adblocker", function() {
 
     beforeAll(function() {
         delete window.detectAB.ads;

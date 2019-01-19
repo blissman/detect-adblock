@@ -1,4 +1,4 @@
-describe("detect-adblock", function() {
+describe("ads-enabled", function() {
 
     it("detectAB.detect should return false if the callback parameter is not a function", function() {
         expect(window.detectAB.detect("string")).toBe(false);
