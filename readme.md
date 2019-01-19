@@ -36,8 +36,8 @@ $ npm install gulp-cli -g
 
 ## Using the Scripts
 
-1. Include the ads.js and detectAB.js files in your scripts folder.
-2. Update the path to ads.js in the detectAB.js script.
-3. Include the detectAB.js script on your page.
+1. Include the ```ads.js``` and ```detectAB.js``` files in your scripts folder.
+2. Update the path to ```ads.js``` in the ```detectAB.js``` script.
+3. Include the ```detectAB.js``` script on your page.
 4. Call the detectAB.detect method with a callback.
 5. If ads are enabled, it should run your callback.
