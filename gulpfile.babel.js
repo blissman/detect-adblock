@@ -1,14 +1,7 @@
 // gulp
 const gulp = require('gulp');
-// karma
-const Server = require('karma').Server;
 // clean
 const del = require('del');
-// uglify (js)
-const uglify = require('gulp-uglify');
-const pump = require('pump');
-// babel
-const babel = require('gulp-babel');
 // eslint
 const eslint = require('gulp-eslint');
 const eslintConfig = {
@@ -53,6 +46,56 @@ const eslintConfig = {
         "prefer-const": ["error"]
     }
 };
+// babel
+const babel = require('gulp-babel');
+// uglify (js)
+const uglify = require('gulp-uglify');
+const pump = require('pump');
+// karma
+const Server = require('karma').Server;
+
+/*
+    clean task - remove existing dist folder and its contents
+*/
+gulp.task('clean:dist', function() {
+    return del([
+        'dist/**/*',
+    ]);
+});
+
+/*
+    ESLint task
+*/
+gulp.task('lint', function() {
+    return gulp.src('src/*.js').pipe(eslint(eslintConfig))
+        .pipe(eslint.format())
+        // Brick on failure to be super strict
+        .pipe(eslint.failOnError());
+});
+
+/*
+    gulp-babel task
+*/
+gulp.task('babel', () =>
+    gulp.src('src/*.js')
+    .pipe(babel({
+        presets: ['@babel/env']
+    }))
+    .pipe(gulp.dest('dist'))
+);
+
+/*
+    gulp-uglify (js) task
+*/
+gulp.task('uglify-js', function(callback) {
+    pump([
+            gulp.src('dist/*.js'),
+            uglify(),
+            gulp.dest('dist')
+        ],
+        callback
+    );
+});
 
 /*
     karma tasks
@@ -69,50 +112,5 @@ gulp.task('tdd', function(done) {
         configFile: __dirname + '/karma.conf.js'
     }, done()).start();
 });
-
-/*
-    clean task - remove existing dist folder and its contents
-*/
-gulp.task('clean:dist', function() {
-    return del([
-        'dist/**/*',
-    ]);
-});
-
-
-/*
-    ESLint task
-*/
-gulp.task('lint', function() {
-    return gulp.src('src/*.js').pipe(eslint(eslintConfig))
-        .pipe(eslint.format())
-        // Brick on failure to be super strict
-        .pipe(eslint.failOnError());
-});
-
-/*
-    gulp-uglify (js) task
-*/
-gulp.task('uglify-js', function(callback) {
-    pump([
-            gulp.src('dist/*.js'),
-            uglify(),
-            gulp.dest('dist')
-        ],
-        callback
-    );
-});
-
-/*
-    gulp-babel task
-*/
-gulp.task('babel', () =>
-    gulp.src('src/*.js')
-    .pipe(babel({
-        presets: ['@babel/env']
-    }))
-    .pipe(gulp.dest('dist'))
-);
-
 
 gulp.task('default', gulp.series(gulp.parallel('clean:dist', 'lint'), 'babel', 'uglify-js', 'test'));
