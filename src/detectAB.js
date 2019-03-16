@@ -1,24 +1,37 @@
-(() => {
-    const element = document.getElementsByTagName("head")[0];
-    const script = document.createElement("script");
-    script.id = "adblocker-test-js";
-    // change this to the path of your scripts folder
-    script.src = "//ads.js";
-    element.appendChild(script);
+window.detectAB = (() => {
+    return {
+        makeRequest: (url, method) => {
+            let request = new XMLHttpRequest();
 
-    if (!window.detectAB) {
-        window.detectAB = {};
+            return new Promise((resolve, reject) => {
+                request.onreadystatechange = () => {
+                    if (request.readyState !== 4) return;
+                    if (request.status >= 200 && request.status < 300) {
+                        resolve(request);
+                    } else {
+                        reject({
+                            status: request.status,
+                            statusText: request.statusText
+                        });
+                    }
+                };
+                request.open(method || 'GET', url, true);
+                request.send();
+            });
+        },
+
+        setAds: (state) => {
+            if (!window.detectAB) {
+                window.detectAB = {};
+            };
+            window.detectAB.ads = !!state;
+        }
     }
-    window.detectAB.detect = (callback) => {
-        if (typeof(callback) !== "function") {
-            return false;
-        }
-        if (window.detectAB.ads) {
-            // do something if ads are available
-            callback();
-            return true;
-        } else {
-            return false;
-        }
-    };
 })();
+
+window.detectAB.makeRequest("/ads.js").then((data) => {
+    window.detectAB.setAds(true);
+}).catch((error) => {
+    console.log("ads.js load failed with status: " + error.status + " text: " + error.statusText);
+    window.detectAB.setAds(false);
+});

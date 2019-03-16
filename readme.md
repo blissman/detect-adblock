@@ -6,7 +6,8 @@ This function allows one to detect whether the client is using an adblocker.
 
 ## How does that work?
 
-Most adblockers will have rules to detect JavaScript files that add trackers or marketing to a page. The detectAB.js script will attempt to append ads.js to the head of the page, which sets a flag to true. If you run detectAB.detect with a callback method, it will run your callback.
+We make an XMLHttpRequest "GET" request to the ads.js file, and if it's successful we set window.detectAB.ads to true, but if it gets blocked to false.
+
 ## Pre-Requisites
 
 ### Homebrew
@@ -39,5 +40,4 @@ $ npm install gulp-cli -g
 1. Include the ```ads.js``` and ```detectAB.js``` files in your scripts folder.
 2. Update the path to ```ads.js``` in the ```detectAB.js``` script.
 3. Include the ```detectAB.js``` script on your page.
-4. Call the detectAB.detect method with a callback.
-5. If ads are enabled, it should run your callback.
+4. Include any callbacks you want in the "then" methods.

@@ -1,25 +1,26 @@
 {
-  "name": "detect-adblock",
-  "version": "1.0.0",
-  "description": "detect adblock on client side",
+  "name": "gulpbuild",
+  "version": "1.1.0",
+  "description": "a starter repository for setting up gulp",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blissman/detect-adblock.git"
+    "url": "git+https://github.com/blissman/gulpbuild.git"
   },
   "keywords": [
-    "adblock",
-    "analytics"
+    "gulp",
+    "karma",
+    "testing"
   ],
   "author": "Bliss Man",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/blissman/detect-adblock/issues"
+    "url": "https://github.com/blissman/gulpbuild/issues"
   },
-  "homepage": "https://github.com/blissman/detect-adblock#readme",
+  "homepage": "https://github.com/blissman/gulpbuild#readme",
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
@@ -27,8 +28,14 @@
     "del": "^4.0.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.0.0",
     "gulp-eslint": "^5.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-jsbeautifier": "^3.0.0",
+    "gulp-pump": "0.0.2",
     "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^1.0.4",
     "jasmine": "^3.3.1",
     "karma": "^4.0.1",
     "karma-chrome-launcher": "^2.2.0",

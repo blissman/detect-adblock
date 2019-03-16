@@ -1,18 +1,25 @@
-describe("adblocker", function() {
+describe("adblocker", () => {
 
-    beforeAll(function() {
+    beforeAll(() => {
         delete window.detectAB.ads;
     });
 
-    it("detectAB.detect should return false if the callback parameter is not a function", function() {
-        expect(window.detectAB.detect("string")).toBe(false);
-    });
-
-    it("detectAB.detect should return false if a callback is a function, and ads are disabled", function() {
-        const callback = () => {
-            return;
-        };
-        expect(window.detectAB.detect(callback)).toBe(false);
+    it("should set the window.detectAB.ads to state", () => {
+        window.detectAB.setAds(true);
+        expect(window.detectAB).toBeDefined();
+        expect(window.detectAB.ads).toEqual(true);
+        window.detectAB.setAds(false);
+        expect(window.detectAB).toBeDefined();
+        expect(window.detectAB.ads).toEqual(false);
+        window.detectAB.setAds(1);
+        expect(window.detectAB).toBeDefined();
+        expect(window.detectAB.ads).toEqual(true);
+        window.detectAB.setAds(0);
+        expect(window.detectAB).toBeDefined();
+        expect(window.detectAB.ads).toEqual(false);
+        window.detectAB.setAds(undefined);
+        expect(window.detectAB).toBeDefined();
+        expect(window.detectAB.ads).toEqual(false);
     });
 
 });
