@@ -1,3 +1,5 @@
+require("../src/detectAB.js");
+
 describe("adblocker", () => {
 
     beforeAll(() => {
