@@ -31,7 +31,7 @@ window.detectAB = (() => {
     };
 })();
 
-window.detectAB.makeRequest("/ads.js").then((data) => {
+window.detectAB.makeRequest("./ads.js").then((data) => {
     window.detectAB.setAds(true);
 }).catch((error) => {
     console.log("ads.js load failed with status: " + error.status + " text: " + error.statusText);
