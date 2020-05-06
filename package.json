@@ -21,20 +21,20 @@
     },
     "homepage": "https://github.com/blissman/gulpbuild#readme",
     "devDependencies": {
-        "@babel/core": "^7.7.7",
-        "@babel/preset-env": "^7.7.7",
-        "@babel/register": "^7.7.7",
+        "@babel/core": "^7.9.6",
+        "@babel/preset-env": "^7.9.6",
+        "@babel/register": "^7.9.0",
         "del": "^5.1.0",
         "gulp": "^4.0.2",
         "gulp-babel": "^8.0.0",
-        "gulp-clean-css": "^4.2.0",
+        "gulp-clean-css": "^4.3.0",
         "gulp-eslint": "^6.0.0",
         "gulp-htmlmin": "^5.0.1",
-        "gulp-imagemin": "^6.2.0",
+        "gulp-imagemin": "^7.1.0",
         "gulp-jsbeautifier": "^3.0.1",
         "gulp-uglify": "^3.0.2",
         "gulp-uglify-es": "^2.0.0",
-        "jest": "^24.9.0"
+        "jest": "^26.0.1"
     },
     "jest": {
         "collectCoverage": true,
